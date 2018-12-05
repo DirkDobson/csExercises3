@@ -50,48 +50,17 @@ namespace csExercises3
         public void Question3()
         {
             //Question 3
-            System.Console.WriteLine("Enter a time (HH:mm) and I will see if it exists");
+            System.Console.WriteLine("Enter a time (HH:mm) and I will see if it is in that format");
             string user = Console.ReadLine();
-            if (CheckDate(user) == true)
-            {
-                var date = Convert.ToDateTime(user);
-                if (CheckDateString(date) == true)
-                {
-                    System.Console.WriteLine("Valid");
-                } else {
-                    System.Console.WriteLine("Not Valid");
+            CultureInfo enUS = new CultureInfo("en-US"); 
+            DateTime dateValue;
+            
+            if (DateTime.TryParseExact(user, "HH:mm", enUS, 
+                                        DateTimeStyles.None, out dateValue))
+                Console.WriteLine("'{0}' is acceptable", user);
+            else
+                Console.WriteLine("'{0}' is not in an acceptable format.", user);
                 }
-            } else {
-                System.Console.WriteLine("Not Valid");
-            }
-        }
-
-        protected bool CheckDate(String date)
-        {
-            //Function used for Question 3
-            try
-            {
-                DateTime dateValue;
-                DateTime dt = DateTime.TryParseExact(date, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out dateValue);
-                return true;
-            } catch {
-                return false;
-            }
-        }
-
-        protected bool CheckDateString(DateTime date)
-        {
-            try
-            {
-                string hourMinute = date.TryParseExact(date, "HH:mm");
-                System.Console.WriteLine(hourMinute);
-                return true;
-            }  catch {
-                return false;
-            }
-        }
-
-
 
         public class test
         {

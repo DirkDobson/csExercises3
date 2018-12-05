@@ -64,6 +64,7 @@ namespace csExercises3
 
         public void Question4()
         {
+            //Question 4
             System.Console.WriteLine("Enter a few words separated by a space and I will make it PascalCase");
             var user = Console.ReadLine();
             string newUser = user.ToLower();
@@ -83,15 +84,53 @@ namespace csExercises3
             System.Console.WriteLine();
         }
 
+        public void Question5()
+        {
+            System.Console.WriteLine("I will count the vowels in an English word");
+            string word = Console.ReadLine().ToLower();
+            int count = 0;
+            foreach(var i in word)
+            {
+                switch (i) 
+                {
+                    case 'a' :
+                        count++;
+                        break;
+                    case 'e' :
+                        count++;
+                        break;
+                    case 'i' :
+                        count++;
+                        break;
+                    case 'o' :
+                        count++;
+                        break;
+                    case 'u' :
+                        count++;
+                        break;
+                }
+            }
+            if (count == 0)
+            {
+                foreach(var i in word)
+                {
+                    if(i == 'y')
+                        count++;
+                }
+            }
+            System.Console.WriteLine(count);
+        }
+
         public class test
         {
             static void Main(string[] args)
             {
                 var display = new Program();
-                //display.Question1();
-                //display.Question2();
-                //display.Question3();
+                display.Question1();
+                display.Question2();
+                display.Question3();
                 display.Question4();
+                display.Question5();
             }
         }
     }

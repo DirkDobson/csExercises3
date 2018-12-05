@@ -68,15 +68,19 @@ namespace csExercises3
             var user = Console.ReadLine();
             string newUser = user.ToLower();
             string [] words = newUser.Split(" ");
-            foreach(var u in words)
-                System.Console.Write(u);
+            string [] display = new string[words.Length]; 
+            string [] first = new string[words.Length];
             for (byte i = 0; i <= words.Length -1; i++)
             {
-                words[i].Substring(0).ToUpper();
+               first[i] = words[i].Substring(0,1).ToUpper();
+               display[i] = words[i].Substring(1);
             }
             System.Console.WriteLine();
-            foreach(var u in words)
-                System.Console.Write(u);
+            for(byte i = 0; i <= words.Length - 1; i++)
+            {
+                Console.Write("{0}{1}", first[i], display[i]);
+            }
+            System.Console.WriteLine();
         }
 
         public class test
@@ -84,8 +88,8 @@ namespace csExercises3
             static void Main(string[] args)
             {
                 var display = new Program();
-                // display.Question1();
-                // display.Question2();
+                //display.Question1();
+                //display.Question2();
                 //display.Question3();
                 display.Question4();
             }

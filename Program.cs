@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace csExercises3
 {
@@ -51,20 +52,47 @@ namespace csExercises3
             //Question 3
             System.Console.WriteLine("Enter a time (HH:mm) and I will see if it exists");
             string user = Console.ReadLine();
-            
-           if (Convert.ToBoolean(Convert.ToDateTime(user)) == true)
-           { 
-               DateTime time = Convert.ToDateTime(user);
-               if (Convert.ToBoolean(time.ToString("HH:mm")) == true)
-               {
-                   System.Console.WriteLine("Valid");
-               } else {
-                   System.Console.WriteLine("Not Valid");
-               }
-           } else {
-               System.Console.WriteLine("Not Valid");
-           }
+            if (CheckDate(user) == true)
+            {
+                var date = Convert.ToDateTime(user);
+                if (CheckDateString(date) == true)
+                {
+                    System.Console.WriteLine("Valid");
+                } else {
+                    System.Console.WriteLine("Not Valid");
+                }
+            } else {
+                System.Console.WriteLine("Not Valid");
+            }
         }
+
+        protected bool CheckDate(String date)
+        {
+            //Function used for Question 3
+            try
+            {
+                DateTime dateValue;
+                DateTime dt = DateTime.TryParseExact(date, "HH:mm", new CultureInfo("en-US"), DateTimeStyles.None, out dateValue);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        protected bool CheckDateString(DateTime date)
+        {
+            try
+            {
+                string hourMinute = date.TryParseExact(date, "HH:mm");
+                System.Console.WriteLine(hourMinute);
+                return true;
+            }  catch {
+                return false;
+            }
+        }
+
+
+
         public class test
         {
             static void Main(string[] args)

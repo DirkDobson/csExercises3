@@ -60,7 +60,24 @@ namespace csExercises3
                 Console.WriteLine("'{0}' is acceptable", user);
             else
                 Console.WriteLine("'{0}' is not in an acceptable format.", user);
-                }
+        }
+
+        public void Question4()
+        {
+            System.Console.WriteLine("Enter a few words separated by a space and I will make it PascalCase");
+            var user = Console.ReadLine();
+            string newUser = user.ToLower();
+            string [] words = newUser.Split(" ");
+            foreach(var u in words)
+                System.Console.Write(u);
+            for (byte i = 0; i <= words.Length -1; i++)
+            {
+                words[i].Substring(0).ToUpper();
+            }
+            System.Console.WriteLine();
+            foreach(var u in words)
+                System.Console.Write(u);
+        }
 
         public class test
         {
@@ -69,9 +86,8 @@ namespace csExercises3
                 var display = new Program();
                 // display.Question1();
                 // display.Question2();
-                display.Question3();
-                // var now = DateTime.Now;
-                // System.Console.WriteLine(now.ToString("HH:mm"));
+                //display.Question3();
+                display.Question4();
             }
         }
     }
